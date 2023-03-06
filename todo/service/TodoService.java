@@ -12,7 +12,7 @@ import java.util.function.Predicate;
 @Service
 public class TodoService {
 
-    private static List<Todo> todos=new ArrayList<>(); // In-memory database
+    private static List<Todo> todos=new ArrayList<>(); 
     private static int todoCount=0;
 
     static {
@@ -23,11 +23,11 @@ public class TodoService {
         todos.add(new Todo(++todoCount,"Yoga",false));
     }
 
-    public List<Todo> findAll() { // Business Logic
+    public List<Todo> findAll() { 
         return todos;
     }
 
-    public Todo findById(int id) { // business LOgic
+    public Todo findById(int id) {
         Predicate<? super Todo> predicate = todo -> todo.getId() == id;
         Todo todo = todos.stream().filter(predicate).findFirst().get();
         return todo;
@@ -43,10 +43,9 @@ public class TodoService {
     }
 
     public void updateTodo(int id,Todo newTodo) {
-        //step 1: find todo to be update
-        //Step 2: update todo
 
-        Todo todo=findById(id);// step 1
+
+        Todo todo=findById(id);
 
         todo.setId(newTodo.getId());
         todo.setTitle(newTodo.getTitle());
